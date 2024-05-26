@@ -19,4 +19,5 @@ dependencyResolutionManagement {
 
 rootProject.name = 'fly-jackson'
 include 'jackson-case'
+include 'boot'
 
