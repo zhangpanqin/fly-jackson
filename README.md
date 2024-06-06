@@ -10,15 +10,23 @@ DispatcherServlet 继承了 ApplicationContextAware 和 EnvironmentAware。
 init -> onRefresh -> initStrategies
 
 ```java
-protected void initStrategies(ApplicationContext context) {
-    initMultipartResolver(context);
-    initLocaleResolver(context);
-    initThemeResolver(context);
-    initHandlerMappings(context);
-    initHandlerAdapters(context);
-    initHandlerExceptionResolvers(context);
-    initRequestToViewNameTranslator(context);
-    initViewResolvers(context);
-    initFlashMapManager(context);
-}
+protected void initStrategies(ApplicationContext context){
+        initMultipartResolver(context);
+        initLocaleResolver(context);
+        initThemeResolver(context);
+        initHandlerMappings(context);
+        initHandlerAdapters(context);
+        initHandlerExceptionResolvers(context);
+        initRequestToViewNameTranslator(context);
+        initViewResolvers(context);
+        initFlashMapManager(context);
+        }
 ```
+
+ServletWebServerApplicationContext onRefresh 的时候，会 createWebServer，创建 TomcatStarter（ServletContainerInitializer
+servlet 3.0 规范），绑定 Tomcat context。
+
+TomcatStarter 的 onStartup 被回调，然后调用了 ServletContextInitializer onStartup。
+
+DispatcherServletRegistrationBean 实现了 ServletContextInitializer。
+DispatcherServletRegistrationBean 会将 DispatcherServlet 和 Tomcat 关联。
