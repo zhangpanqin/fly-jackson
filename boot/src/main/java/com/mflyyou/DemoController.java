@@ -9,4 +9,9 @@ public class DemoController {
     public User demo(User user) {
         return user;
     }
+
+    @GetMapping("/demo2")
+    public User2 demo2(User2 user) {
+        return user;
+    }
 }
