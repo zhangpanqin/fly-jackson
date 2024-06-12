@@ -30,3 +30,6 @@ TomcatStarter 的 onStartup 被回调，然后调用了 ServletContextInitialize
 
 DispatcherServletRegistrationBean 实现了 ServletContextInitializer。
 DispatcherServletRegistrationBean 会将 DispatcherServlet 和 Tomcat 关联。
+
+
+HandlerMethodArgumentResolver 方法入参解析。
